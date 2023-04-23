@@ -18,17 +18,17 @@
         <section>
                 <h2>Check the price</h2>
                 <form @submit.prevent="fetchCurrentPrice">
-                        <select v-model="choice.name" class="form_elements" style="padding: 10px;">
+                        <select v-model="choice.name" class="form_elements" style="padding: 10px;" @change='submitFlag'>
                                 <option
                                 v-for="item in currencyValues"
                                 >
                                 {{item.value}}
                                 </option>
                         </select>
-                        <input type="submit" value="Fetch Price" class="form_elements" />
+                        <input type="submit" value="Fetch Price" class="form_elements" @click="submitFlag" />
                 </form>
-                <p v-if="choice.name == '' && choice.price == 0">No currency choosen</p>
-                <p v-if="choice.name !== '' && choice.price !== 0">Current price of {{choice.name}} is {{choice.price}}</p>
+                <p v-if="choice.name == ''">No currency choosen</p>
+                <p v-if="choice.name !== '' && !submittedForm">Current price of pair BTC/{{choice.name}} is {{choice.price}}</p>
         </section>
 
         <section>

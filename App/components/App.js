@@ -34,12 +34,18 @@ const app = Vue.createApp({
                         ],
                         choice: { name: '', price: 0 },
                         tableHeaders: ['', '5 min', '30 min', '60 min'],
+                        submittedForm: false
                 }
         },
         methods: {
                 async fetchCurrentPrice() {
                         const data = await fetchPrice(this.choice.name)
                         this.choice.price = data.amount
+                        this.submittedForm = false
+                },
+                submitFlag() {
+                        this.submittedForm = !this.submittedForm
+                        console.log(this.submittedForm)
                 }
         },
 })
