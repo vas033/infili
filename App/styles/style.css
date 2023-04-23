@@ -1,0 +1,27 @@
+h1,
+section {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 0px 50px;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+}
+
+.form_elements {
+    display: block;
+    margin: 10px 20px;
+    width: 40%;
+    min-height: 4vh;
+}
+
+table tr th {
+    padding: 10px 20px;
+    border: 1px solid #000;
+}
+
+#chart {
+    max-width: 90%;
+}

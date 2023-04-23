@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BTC price</title>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script type="module" src="App/components/App.js"></script>
+        <script type="module" src="App/components/Chart.js"></script>
+        <link rel="stylesheet" href="App/styles/style.css">
+</head>
+
+<body id="app">
+        <h1>Test exercise for Infili</h1>
+        <section>
+                <h2>Check the price</h2>
+                <form @submit.prevent="fetchCurrentPrice">
+                        <select v-model="choice.name" class="form_elements" style="padding: 10px;">
+                                <option
+                                v-for="item in currencyValues"
+                                >
+                                {{item.value}}
+                                </option>
+                        </select>
+                        <input type="submit" value="Fetch Price" class="form_elements" />
+                </form>
+                <p v-if="choice.name == '' && choice.price == 0">No currency choosen</p>
+                <p v-if="choice.name !== '' && choice.price !== 0">Current price of {{choice.name}} is {{choice.price}}</p>
+        </section>
+
+        <section>
+                <h2>Average prices table</h2>
+                <table>
+                        <tr>
+                                <th v-for='time in tableHeaders'>{{time}}</th>
+                        </tr>
+                        <tr v-for='currency in average'>
+                                <th>{{currency.name}}</th>
+                                <th v-for="averagePrice in currency.averagePrices.value" style="margin:50px">{{averagePrice}}</th>
+                        </tr>
+                </table>
+        </section>
+        <section>
+                <div id="chart">
+                </div>
+        </section>
+</body>
+
+</html>
